@@ -1,0 +1,6 @@
+board:
+  name: mydisco
+  full_name: MyDisco
+  vendor: st
+  socs:
+    - name: stm32f429xx

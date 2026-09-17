@@ -1,0 +1,69 @@
+/*
+ * Copyright (c) 2017 Linaro Limited
+ * Copyright (c) 2024 STMicroelectronics
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <st/f4/stm32f429Xi.dtsi>
+#include <st/f4/stm32f429zitx-pinctrl.dtsi>
+
+/ {
+	model = "STMicroelectronics STM32F429I_DISC1 board";
+	compatible = "st,stm32f4discovery";
+
+	chosen {
+		zephyr,console = &usart1;
+		zephyr,shell-uart = &usart1;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+
+		green_led_3: led_3 {
+			gpios = <&gpiog 13 GPIO_ACTIVE_HIGH>;
+			label = "User LD3";
+		};
+
+		red_led_4: led_4 {
+			gpios = <&gpiog 14 GPIO_ACTIVE_HIGH>;
+			label = "User LD4";
+		};
+	};
+
+	aliases {
+		led0 = &green_led_3;
+	};
+};
+
+&clk_hse {
+	clock-frequency = <DT_FREQ_M(8)>;
+	status = "okay";
+};
+
+&pll {
+	div-m = <8>;
+	mul-n = <336>;
+	div-p = <2>;
+	div-q = <7>;
+	clocks = <&clk_hse>;
+	status = "okay";
+};
+
+&rcc {
+	clocks = <&pll>;
+	clock-frequency = <DT_FREQ_M(168)>;
+	ahb-prescaler = <1>;
+	apb1-prescaler = <4>;
+	apb2-prescaler = <2>;
+};
+
+&usart1 {
+	pinctrl-0 = <&usart1_tx_pa9 &usart1_rx_pa10>;
+	pinctrl-names = "default";
+	current-speed = <115200>;
+	status = "okay";
+};
