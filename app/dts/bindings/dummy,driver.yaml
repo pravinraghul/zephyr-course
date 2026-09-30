@@ -1,0 +1,10 @@
+description: Dummy Driver
+
+compatible: "dummy,driver"
+
+include: base.yaml
+
+properties:
+  calibration:
+    type: int
+    required: true

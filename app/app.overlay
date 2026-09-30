@@ -2,4 +2,10 @@
     aliases {
         app-led = &green_led_3;
     };
+
+    dummudriver0: dummy_driver {
+        compatible = "dummy,driver";
+        calibration = <100>;
+        status = "okay";
+    };
 };

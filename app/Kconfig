@@ -55,3 +55,4 @@ config APP_HEARTBEAT_PERIOD_MS
     default 500
 
 source "Kconfig.zephyr"
+rsource "drivers/dummy_driver/Kconfig"
