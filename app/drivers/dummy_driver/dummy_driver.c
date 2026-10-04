@@ -35,6 +35,7 @@ static int device_off(const struct device *dev,
     if (gpio_pin_set_dt(&led, data->invert ? 1 : 0) < 0) {
         return -1;
     }
+    val->val1 = 10;
     LOG_INF("device_off: Turn %s LED", data->invert ? "ON" : "OFF");
     return 0;
 }

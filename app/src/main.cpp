@@ -22,7 +22,7 @@ int main(void)
         dummy_driver_set_invert(driver, invert);
         sensor_sample_fetch(driver);
         sensor_channel_get(driver, SENSOR_CHAN_AMBIENT_TEMP, &val);
-        k_msleep(1000);
+        k_msleep(5000);
     }
     return 0;
 }
