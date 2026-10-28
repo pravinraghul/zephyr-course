@@ -75,6 +75,7 @@ static int sencmd_set_value(const struct shell *sh, size_t argc, char **argv) {
         return -ERANGE;
     }
 
+    dummy_driver_set_invert(dev, value);
     shell_print(sh, "invert set to %ld", value);
     return 0;
 }
